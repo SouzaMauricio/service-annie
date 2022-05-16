@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex justify-between w-full h-16 px-6 py-2 shadow-md bg-annie-primary"
+    class="flex justify-between w-full h-16 px-2 py-2 shadow-md bg-annie-primary sm:px-6"
   >
     <div
       class="flex items-center w-20 h-full md:hidden text-annie-second"
     >
       <button
-        class=""
+        class="focus:outline-none "
         @click="showMenu = !showMenu"
       >
         <svg
@@ -123,7 +123,7 @@
     <!-- MENU SIDE -->
     <div
       v-if="showMenu"
-      class="absolute left-0 flex h-full p-4 text-lg font-medium bg-white shadow-md top-16 text-annie-primary w-72 sm:hidden"
+      class="absolute left-0 z-40 flex w-full p-4 text-lg font-medium bg-white shadow-md top-16 text-annie-primary md:hidden"
     >
       <ul
         class="content-center w-full divide-y"
