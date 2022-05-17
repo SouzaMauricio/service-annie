@@ -1,29 +1,25 @@
 <template>
   <div>
-    <span
-      class="text-xl font-medium text-annie-primary"
-    >
-      Aproveite nossas oportunidades
-    </span>
-
     <div
-      class="flex flex-wrap justify-between mt-4"
+      id="sections"
+      class="mb-10 space-y-6"
     >
-      <PropertyItem
-        class="w-96"
-      />
+      <LastProperties />
+      <LastReleases />
     </div>
   </div>
 </template>
 
 <script>
-import PropertyItem from '../cards/PropertyItem.vue'
+import LastProperties from './sections/LastProperties'
+import LastReleases from './sections/LastReleases'
 
 export default {
   name: 'FeedProperties',
 
   components: {
-    PropertyItem
+    LastProperties,
+    LastReleases
   }
 }
 </script>

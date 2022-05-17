@@ -1,10 +1,15 @@
 <template>
-  <div class="flex flex-col">
-    <TopBar />
+  <div class="flex flex-col justify-between h-screen">
     <div>
-      <router-view
-        class="h-auto"
+      <TopBar
+        class="sticky"
       />
+      <div
+        class="relative flex justify-center"
+      >
+        <router-view
+        />
+      </div>
     </div>
     <FooterGeneral
       class="bottom-0"

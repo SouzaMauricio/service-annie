@@ -7,7 +7,7 @@
       class="grid w-full justify-items-center"
     >
       <img
-        src="../../assets/main/image.png"
+        src="../../assets/main/9.jpeg"
         class="object-cover w-full h-40 md:h-72 lg:h-96"
         alt=""
       >

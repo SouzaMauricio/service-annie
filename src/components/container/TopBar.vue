@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between w-full h-16 px-2 py-2 shadow-md bg-annie-primary sm:px-6"
+    class="top-0 z-50 flex justify-between w-full h-16 px-2 py-2 shadow-md bg-annie-primary sm:px-6"
   >
     <div
       class="flex items-center w-20 h-full md:hidden text-annie-second"

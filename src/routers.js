@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MainScreen from './views/MainScreen'
+import PropertyScreen from './views/PropertyScreen'
 import DefaultContainer from './containers/DefaultContainer'
 
 const routes = [
@@ -10,12 +11,17 @@ const routes = [
     children: [
       {
         path: '/',
-        redirect: MainScreen
+        redirect: 'main'
       },
       {
         path: '/main',
         name: 'Main',
         component: MainScreen
+      },
+      {
+        path: 'property',
+        name: 'Property',
+        component: PropertyScreen
       }
     ]
   }

@@ -1,6 +1,7 @@
 <template>
   <div
-    class="bg-white border border-gray-200 rounded-lg shadow-md text-annie-text"
+    class="bg-white border border-gray-200 rounded-lg shadow-md text-annie-text min-w-[320px] w-[320px] cursor-pointer"
+    @click="redirectToProperty()"
   >
     <div>
       <img
@@ -11,7 +12,7 @@
     </div>
     
     <div
-      class="h-48 p-4 space-y-2 text-sm"
+      class="p-4 space-y-2 text-sm h-44"
     >
       <div
         class="font-medium"
@@ -66,9 +67,6 @@
         class=""
       >
         <p>
-          Rua das Américas, 300
-        </p>
-        <p>
           Moema, São Paulo
         </p>
       </div>
@@ -81,10 +79,10 @@
 
     </div>
     <div
-      class="flex justify-between px-4 pb-4 text-annie-primary"
+      class="flex justify-between px-4 pb-4 text-sm font-medium text-annie-primary"
     >
       <div
-        class="flex space-x-2"
+        class="flex items-center space-x-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +104,7 @@
         </svg>
       </div>
       <div
-        class="flex space-x-2"
+        class="flex items-center space-x-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +126,7 @@
         </svg>
       </div>
       <div
-        class="flex space-x-2"
+        class="flex items-center space-x-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +148,7 @@
         </svg>
       </div>
       <div
-        class="flex space-x-2"
+        class="flex items-center space-x-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -174,3 +172,15 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'PropertyItem',
+
+  methods: {
+    redirectToProperty () {
+      this.$router.push('/property')      
+    }
+  }
+}
+</script>

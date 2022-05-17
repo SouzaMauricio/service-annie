@@ -1,5 +1,5 @@
 <template>
-  <div
+  <footer
     class="flex justify-center w-full px-10 py-6 bg-annie-primary"
   >
     <div
@@ -356,5 +356,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
