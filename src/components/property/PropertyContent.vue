@@ -61,126 +61,56 @@
         </div>
 
         <div
-          class="flex justify-between"
+          class="flex justify-between text-annie-primary"
         >
           <div
-            class="flex space-x-2"
+            class="flex items-center space-x-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-annie-primary"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-
+            <span class="text-3xl icon-ruler"></span>
             <span
-              class="font-medium text-annie-primary"
+              class="font-medium"
             >
               Área: 80m²
             </span>
           </div>
           <div
-            class="flex space-x-2"
+            class="flex items-center space-x-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-annie-primary"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-
+            <span class="text-2xl icon-bed"></span>
             <span
-              class="font-medium text-annie-primary"
+              class="font-medium"
             >
-              Dormitórios: 80m²
+              Dormitórios: 5
             </span>
           </div>
           <div
-            class="flex space-x-2"
+            class="flex items-center space-x-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-annie-primary"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-
+            <span class="text-2xl icon-bath"></span>
             <span
-              class="font-medium text-annie-primary"
+              class="font-medium"
             >
-              Suítes: 80m²
+              Suítes: 3
             </span>
           </div>
           <div
-            class="flex space-x-2"
+            class="flex items-center space-x-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-annie-primary"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-
+            <span class="text-2xl icon-shower"></span>
             <span
-              class="font-medium text-annie-primary"
+              class="font-medium"
             >
-              Banheiros: 80m²
+              Banheiros: 6
             </span>
           </div>
           <div
-            class="flex space-x-2"
+            class="flex items-center space-x-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-annie-primary"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-
+            <span class="text-2xl icon-automobile"></span>
             <span
-              class="font-medium text-annie-primary"
+              class="font-medium"
             >
-              Vagas: 80m²
+              Vagas: 5
             </span>
           </div>
         </div>
@@ -467,8 +397,13 @@
           <ul
             class="mt-6"
           >
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <font-awesome-icon :icon="['fas', 'fa-warehouse']" />
+              <p>
+                Dormitórios: 5
+              </p>
             </li>
             <li>
               Dormitórios: 5

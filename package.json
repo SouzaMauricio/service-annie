@@ -11,6 +11,8 @@
     "@mdi/font": "^6.6.96",
     "@tailwindcss/line-clamp": "^0.4.0",
     "core-js": "^3.8.3",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.15"
   },

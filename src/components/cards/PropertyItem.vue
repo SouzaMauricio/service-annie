@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white border border-gray-200 rounded-lg shadow-md text-annie-text min-w-[320px] w-[320px] cursor-pointer"
+    class="bg-white border border-gray-200 rounded-lg shadow-md text-annie-text min-w-[330px] w-[330px] cursor-pointer"
     @click="redirectToProperty()"
   >
     <div>
@@ -18,7 +18,7 @@
         class="font-medium"
       >
         <div
-          class="flex justify-between"
+          class="flex items-center justify-between"
         >
           <span
             id="type-property"
@@ -84,90 +84,34 @@
       <div
         class="flex items-center space-x-2"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
-
-          <span>
-            80m²
-          </span>
-        </svg>
+        <span class="text-2xl icon-ruler"></span>
+        <span>
+          80m²
+        </span>
       </div>
       <div
         class="flex items-center space-x-2"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
-
-          <span>
-            5
-          </span>
-        </svg>
+        <span class="text-xl icon-bed"></span>
+        <span>
+          5
+        </span>
       </div>
       <div
         class="flex items-center space-x-2"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
-
-          <span>
-            3
-          </span>
-        </svg>
+        <span class="text-xl icon-shower"></span>
+        <span>
+          3
+        </span>
       </div>
       <div
         class="flex items-center space-x-2"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
-
-          <span>
-            4
-          </span>
-        </svg>
+        <span class="text-xl icon-automobile"></span>
+        <span>
+          4
+        </span>
       </div>
     </div>
   </div>
