@@ -9,68 +9,84 @@
         class="lg:space-y-14 lg:col-span-2"
       >
         <div
-          class="relative space-y-4"
+          class="space-y-4"
         >
-          <div>
+          <div
+            class="flex justify-between"
+          >
+            <div
+              class="z-10 flex items-center justify-center w-12 h-auto -mr-12 bg-transparent cursor-pointer opacity-70 md:opacity-40 hover:opacity-70"
+              @click="getPrevImage()"
+            >
+              <button
+                class="flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full"
+              >
+                <span class="text-xl text-gray-800 icon-chevron-left"></span>
+              </button>
+            </div>
             <img
-              src="../../assets/main/9.jpeg"
-              class="object-cover w-full h-96"
+              :src="images.current.src"
+              class="object-cover w-max md:w-full sm:h-96 h-52"
               alt=""
             >
+            <div
+              class="z-10 flex items-center justify-center w-12 h-auto -ml-12 bg-transparent cursor-pointer opacity-70 md:opacity-40 hover:opacity-70"
+                @click="getNextImage()"
+            >
+              <button
+                class="flex items-center justify-center w-10 h-10 bg-gray-300 rounded-full"
+              >
+                <span class="text-xl text-gray-800 icon-chevron-right"></span>
+              </button>
+            </div>
           </div>
 
           <ul
-            class="flex justify-between"
+            class="justify-between hidden md:flex"
           >
-            <li>
-              <img
-                src="../../assets/main/9.jpeg"
-                class="object-cover h-20 w-36"
-                alt=""
+            <li
+              v-for="(image, index) of images.defaultList"
+              :key="index"
+              class="cursor-pointer hover:opacity-80"
+              @click="index !== 4 ? changeMainImage(image._id) : openModalPictures()"
+            >
+              <div
+                v-if="index === 4"
+                class="relative z-10 flex"
               >
-            </li>
-            <li>
+                <div
+                  class="flex items-center justify-center h-20 text-lg font-medium text-white bg-black w-36 opacity-70 -mr-36"
+                >
+                  + 30 fotos
+                </div>
+                <img
+                  :src="image.src"
+                  class="object-cover h-20 w-36"
+                >
+              </div>
               <img
-                src="../../assets/main/9.jpeg"
+                v-else
+                :src="image.src"
                 class="object-cover h-20 w-36"
-                alt=""
-              >
-            </li>
-            <li>
-              <img
-                src="../../assets/main/9.jpeg"
-                class="object-cover h-20 w-36"
-                alt=""
-              >
-            </li>
-            <li>
-              <img
-                src="../../assets/main/9.jpeg"
-                class="object-cover h-20 w-36"
-                alt=""
-              >
-            </li>
-            <li>
-              <img
-                src="../../assets/main/9.jpeg"
-                class="object-cover h-20 w-36"
-                alt=""
               >
             </li>
           </ul>
         </div>
 
         <div
-          class="flex justify-between text-annie-primary"
+          class="flex justify-between mt-8 text-sm font-medium text-annie-primary lg:mt-0 md:text-base"
         >
           <div
             class="flex items-center space-x-2"
           >
             <span class="text-3xl icon-ruler"></span>
             <span
-              class="font-medium"
+              class="hidden md:block"
             >
-              Área: 80m²
+              Área: 
+            </span>
+            <span>
+              80m²
             </span>
           </div>
           <div
@@ -78,9 +94,12 @@
           >
             <span class="text-2xl icon-bed"></span>
             <span
-              class="font-medium"
+              class="hidden md:block"
             >
-              Dormitórios: 5
+              Dormitórios:
+            </span>
+            <span>
+               5
             </span>
           </div>
           <div
@@ -88,9 +107,12 @@
           >
             <span class="text-2xl icon-bath"></span>
             <span
-              class="font-medium"
+              class="hidden md:block"
             >
-              Suítes: 3
+              Suítes:
+            </span>
+            <span>
+              3
             </span>
           </div>
           <div
@@ -98,9 +120,14 @@
           >
             <span class="text-2xl icon-shower"></span>
             <span
+              class="hidden md:block"
+            >
+              Banheiros: 
+            </span>
+            <span
               class="font-medium"
             >
-              Banheiros: 6
+              6
             </span>
           </div>
           <div
@@ -108,9 +135,12 @@
           >
             <span class="text-2xl icon-automobile"></span>
             <span
-              class="font-medium"
+              class="hidden md:block"
             >
-              Vagas: 5
+              Vagas: 
+            </span>
+            <span>
+              5
             </span>
           </div>
         </div>
@@ -319,7 +349,9 @@
           </p>
         </div>
 
-        <div>
+        <div
+          class="mt-6"
+        >
           <p
             class="py-2 text-xl font-medium border-b-2"
           >
@@ -327,67 +359,137 @@
           </p>
 
           <ul
-            class="mt-6"
+            class="grid grid-cols-2 gap-6 mt-6 sm:grid-cols-3"
           >
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-bed"></span>
+              <span>
+                Dormitórios: 5
+              </span>
+            </li>
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-shower"></span>
+              <span>
+                Banheiros: 5
+              </span>
             </li>
             <li>
-              Dormitórios: 5
+              <span class="text-xl icon-bath"></span>
+              <span>
+                Suítes: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-automobile"></span>
+              <span>
+                Vagas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-tv"></span>
+              <span>
+                Salas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-cloudy"></span>
+              <span>
+                Varandas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
-            </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-cutlery"></span>
+              <span>
+                Cozinhas: 5
+              </span>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div
+          class="mt-6"
+        >
           <p
             class="py-2 text-xl font-medium border-b-2"
           >
-            Condominio
+            Condomínio
           </p>
 
           <ul
-            class="mt-6"
+            class="grid grid-cols-2 gap-6 mt-6 sm:grid-cols-3"
           >
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-bed"></span>
+              <span>
+                Dormitórios: 5
+              </span>
+            </li>
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-shower"></span>
+              <span>
+                Banheiros: 5
+              </span>
             </li>
             <li>
-              Dormitórios: 5
+              <span class="text-xl icon-bath"></span>
+              <span>
+                Suítes: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-automobile"></span>
+              <span>
+                Vagas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-tv"></span>
+              <span>
+                Salas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-cloudy"></span>
+              <span>
+                Varandas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
-            </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-cutlery"></span>
+              <span>
+                Cozinhas: 5
+              </span>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div
+          class="mt-6"
+        >
           <p
             class="py-2 text-xl font-medium border-b-2"
           >
@@ -395,33 +497,61 @@
           </p>
 
           <ul
-            class="mt-6"
+            class="grid grid-cols-2 gap-6 mt-6 sm:grid-cols-3"
           >
             <li
               class="flex space-x-2"
             >
-              <font-awesome-icon :icon="['fas', 'fa-warehouse']" />
-              <p>
+              <span class="text-xl icon-bed"></span>
+              <span>
                 Dormitórios: 5
-              </p>
+              </span>
+            </li>
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-shower"></span>
+              <span>
+                Banheiros: 5
+              </span>
             </li>
             <li>
-              Dormitórios: 5
+              <span class="text-xl icon-bath"></span>
+              <span>
+                Suítes: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-automobile"></span>
+              <span>
+                Vagas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-tv"></span>
+              <span>
+                Salas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span class="text-xl icon-cloudy"></span>
+              <span>
+                Varandas: 5
+              </span>
             </li>
-            <li>
-              Dormitórios: 5
-            </li>
-            <li>
-              Dormitórios: 5
+            <li
+              class="flex space-x-2"
+            >
+              <span :class="iconTest"></span>
+              <span>
+                Cozinhas: 5
+              </span>
             </li>
           </ul>
         </div>
@@ -432,6 +562,107 @@
 
 <script>
 export default {
-  name: 'PropertyContent'
+  name: 'PropertyContent',
+
+  data () {
+    return {
+      iconTest:'text-xl icon-cutlery',
+      images: {
+        current: {},
+        defaultList: [
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=1',
+            _id: '1'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=2',
+            _id: '2'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=3',
+            _id: '3'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=4',
+            _id: '4'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=5',
+            _id: '5'
+          }
+        ],
+        allList: [
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=1',
+            _id: '1'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=2',
+            _id: '2'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=3',
+            _id: '3'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=4',
+            _id: '4'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=5',
+            _id: '5'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=6',
+            _id: '6'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=7',
+            _id: '7'
+          },
+          {
+            src: 'https://source.unsplash.com/random/600x300?sig=8',
+            _id: '8'
+          }
+        ]
+      }
+    }
+  },
+  
+  mounted () {
+    this.init()
+  },
+
+  methods: {
+    init () {
+      this.images.current = this.images.defaultList[0]
+    },
+    
+    getPrevImage () {
+      const index = this.images.allList.findIndex(image => image._id ===
+        this.images.current._id)
+      const prevImageIndex = index - 1
+      console.log(prevImageIndex)
+      if (!this.images.allList[prevImageIndex]) {
+        this.images.current = this.images.allList[this.images.allList.length - 1]
+        return
+      }
+      this.images.current = this.images.allList[prevImageIndex]
+    },
+
+    getNextImage () {
+      const index = this.images.allList.findIndex(image => image._id === this.images.current._id)
+      const nextImageIndex = index + 1
+      if (!this.images.allList[nextImageIndex]) {
+        this.images.current = this.images.allList[0]
+        return
+      }
+      this.images.current = this.images.allList[nextImageIndex]
+    },
+
+    changeMainImage (imageId) {
+      this.images.current = this.images.defaultList.find(image => image._id === imageId)
+    }
+  }
 }
 </script>
