@@ -19,7 +19,7 @@ const routes = [
         component: MainScreen
       },
       {
-        path: 'property',
+        path: '/property/:cod', 
         name: 'Property',
         component: PropertyScreen
       }

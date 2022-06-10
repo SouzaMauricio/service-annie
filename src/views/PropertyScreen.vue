@@ -2,7 +2,9 @@
   <div
     class="w-full"
   >
-    <PropertyContent />
+    <PropertyContent
+      :property-cod="propertyCod"
+    />
   </div>
 </template>
 
@@ -14,6 +16,13 @@ export default {
 
   components: {
     PropertyContent
+  },
+
+  data () {
+    return {
+      propertyCod: this.$route.params.cod      
+    }
   }
 }
+
 </script>

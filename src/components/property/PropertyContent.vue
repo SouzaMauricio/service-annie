@@ -155,7 +155,7 @@
           <span
             class="px-6 font-medium text-white rounded-full bg-annie-primary"
           >
-            Casa
+            {{ typeLabels[property.type] }}
           </span>
 
           <div
@@ -208,7 +208,7 @@
           <p
             class="text-xl font-medium"
           >
-            Casa com imenso jardim
+            {{ property.title }}
           </p>
         </div>
 
@@ -216,21 +216,22 @@
           class="block"
         >
           <p>
-            Rua das Américas, 519
-          </p>
-          <p>
-            Moema, São Paulo - SP
+            {{ `${property.localization?.neighborhood}, ${property.localization?.city} - ${property.localization?.state}` }}
           </p>
         </div>
 
         <div
           class="text-xl font-semibold"
         >
-          <p>
-            Venda: R$ 3.000.000,00
+          <p
+            v-if="property.toSell"
+          >
+            Venda: R$ {{ property.price?.sale }}
           </p>
-          <p>
-            Locação: R$ 3.000,00
+          <p
+            v-if="property.toRent"
+          >
+            Locação: R$ {{ property.price?.rent }}
           </p>
         </div>
 
@@ -326,7 +327,7 @@
             <p
               class="text-xs"
             >
-              Código do imóvel: AP220578
+              Código do imóvel: {{ property.cod }}
             </p>
           </div>
         </div>
@@ -344,8 +345,8 @@
           
           <p
             class="mt-6"
-          >Lorem ipsum dolor sit amet. Et voluptatem dolor et internos iure sit ipsa corrupti. 33 aliquam dicta aut fuga facere aut obcaecati inventore. Ut placeat saepe ut quia mollitia ut tempora exercitationem aut voluptate quae id error dolorem rem dolor distinctio.
-            Ut possimus corporis non ratione dicta nam quasi nostrum et praesentium necessitatibus cum molestias deserunt est ipsam sint! Aut Quis dolores ab corrupti quisquam non inventore tempora aut molestiae animi At quia veniam. In omnis voluptatem vel deleniti unde non optio minus id expedita odio.
+          >
+            {{ property.description }}
           </p>
         </div>
 
@@ -363,10 +364,11 @@
           >
             <li
               class="flex space-x-2"
+              v-if="property.environments?.bedroom"
             >
               <span class="text-xl icon-bed"></span>
               <span>
-                Dormitórios: 5
+                Dormitórios: {{ property.environments.bedroom[0] }}
               </span>
             </li>
             <li
@@ -407,19 +409,12 @@
                 Varandas: 5
               </span>
             </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-cutlery"></span>
-              <span>
-                Cozinhas: 5
-              </span>
-            </li>
           </ul>
         </div>
 
         <div
           class="mt-6"
+          v-if="property.condominium"
         >
           <p
             class="py-2 text-xl font-medium border-b-2"
@@ -431,57 +426,13 @@
             class="grid grid-cols-2 gap-6 mt-6 sm:grid-cols-3"
           >
             <li
+              v-for="(facility, index) of property.condominium?.facilities"
+              :key="index"
               class="flex space-x-2"
             >
-              <span class="text-xl icon-bed"></span>
+              <span :class="facility.icon"></span>
               <span>
-                Dormitórios: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-shower"></span>
-              <span>
-                Banheiros: 5
-              </span>
-            </li>
-            <li>
-              <span class="text-xl icon-bath"></span>
-              <span>
-                Suítes: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-automobile"></span>
-              <span>
-                Vagas: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-tv"></span>
-              <span>
-                Salas: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-cloudy"></span>
-              <span>
-                Varandas: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-cutlery"></span>
-              <span>
-                Cozinhas: 5
+                {{ facility.facility }}
               </span>
             </li>
           </ul>
@@ -489,6 +440,7 @@
 
         <div
           class="mt-6"
+          v-if="property.nearby && property.nearby[0]"
         >
           <p
             class="py-2 text-xl font-medium border-b-2"
@@ -500,131 +452,58 @@
             class="grid grid-cols-2 gap-6 mt-6 sm:grid-cols-3"
           >
             <li
+              v-for="(nearby, index) of property.nearby"
+              :key="index"
               class="flex space-x-2"
             >
-              <span class="text-xl icon-bed"></span>
+              <span :class="nearby.icon"></span>
               <span>
-                Dormitórios: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-shower"></span>
-              <span>
-                Banheiros: 5
-              </span>
-            </li>
-            <li>
-              <span class="text-xl icon-bath"></span>
-              <span>
-                Suítes: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-automobile"></span>
-              <span>
-                Vagas: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-tv"></span>
-              <span>
-                Salas: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span class="text-xl icon-cloudy"></span>
-              <span>
-                Varandas: 5
-              </span>
-            </li>
-            <li
-              class="flex space-x-2"
-            >
-              <span :class="iconTest"></span>
-              <span>
-                Cozinhas: 5
+                {{ `${nearby.title}: ${nearby.distance}m` }}
               </span>
             </li>
           </ul>
         </div>
       </div>
     </div>
+    <CustomModal
+      :show="showImageGallery"
+    />
   </section>
 </template>
 
 <script>
+import CustomModal from '../commons/CustomModal'
+import * as PropertyGateway from '../../gateway/armin/services/properties'
+
 export default {
   name: 'PropertyContent',
 
+  props: {
+    propertyCod: {
+      type: String,
+      required: true
+    }
+  },
+
+  components: {
+    CustomModal
+  },
+
   data () {
     return {
+      showImageGallery: false,
       iconTest:'text-xl icon-cutlery',
       images: {
         current: {},
-        defaultList: [
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=1',
-            _id: '1'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=2',
-            _id: '2'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=3',
-            _id: '3'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=4',
-            _id: '4'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=5',
-            _id: '5'
-          }
-        ],
-        allList: [
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=1',
-            _id: '1'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=2',
-            _id: '2'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=3',
-            _id: '3'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=4',
-            _id: '4'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=5',
-            _id: '5'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=6',
-            _id: '6'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=7',
-            _id: '7'
-          },
-          {
-            src: 'https://source.unsplash.com/random/600x300?sig=8',
-            _id: '8'
-          }
-        ]
+        defaultList: [],
+        allList: []
+      },
+      property: {},
+      typeLabels: {
+        'APARTMENT': 'Apartamento',
+        'HOUSE_IN_CONDOMINIUM': 'Casa',
+        'PRIVATE_HOUSE': 'Casa',
+        'RELEASE': 'Lançamento',
       }
     }
   },
@@ -634,8 +513,9 @@ export default {
   },
 
   methods: {
-    init () {
-      this.images.current = this.images.defaultList[0]
+    async init () {
+      this.property = await PropertyGateway.getOneByCod(this.propertyCod)
+      // this.images.current = this.images.defaultList[0]
     },
     
     getPrevImage () {
