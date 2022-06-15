@@ -27,13 +27,21 @@ const routes = [
   }
 ]
 
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  scrollBehavior () {
-    return { top: 0 }
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
   }
+})
+
+const DEFAULT_TITLE = 'Negócios Imobiliários'
+router.afterEach((to) => {
+  document.title = to.meta?.title || DEFAULT_TITLE
 })
 
 export default router

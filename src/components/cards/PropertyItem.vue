@@ -1,11 +1,12 @@
 <template>
   <div
-    class="bg-white border border-gray-200 rounded-lg shadow-md text-annie-text min-w-[330px] w-[330px] cursor-pointer"
+    class="bg-white border border-gray-200 rounded-lg shadow-md text-annie-text min-w-[340px] w-[340px] cursor-pointer"
     @click="redirectToProperty()"
   >
-    <div>
+    <div
+    >
       <img
-        src="../../assets/main/image.png"
+        :src="property.pictures[0]?.fullPath"
         class="object-cover w-full h-72"
         alt=""
       >
@@ -15,7 +16,7 @@
       class="p-4 space-y-2 text-sm h-44"
     >
       <div
-        class="font-medium"
+        class="space-y-2 font-medium"
       >
         <div
           class="flex items-center justify-between"
@@ -23,58 +24,78 @@
           <span
             id="type-property"
           >
-            Casa
+            {{ typeLabels[property.type] }}
           </span>
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 text-annie-primary"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
+          <div
+            class="text-2xl text-annie-primary"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
+            <button
+              v-if="$store.getters.isFavorited(property.cod)"
+              @click.stop="removeFavorite()"
+              class="flex items-center justify-center p-1 rounded-full hover:bg-gray-100"
+            >
+              <span class="icon-favorite">
+              </span>
+            </button>
+            <button
+              v-else
+              @click.stop="addToFavorite()"
+              class="flex items-center justify-center p-1 rounded-full hover:bg-gray-100"
+            >
+              <span class="icon-favorite_outline"></span>
+            </button>
+          </div>
         </div>
         <div
-          class="flex justify-start space-x-2"
+          v-if="property.type !== 'RELEASE'"
+          class="flex justify-start space-x-2 whitespace-nowrap"
         >
-          <span>
-            Locação R$ 3000,00
+          <span
+            v-if="property.toRent"
+          >
+            Locação {{ formatCurrency(property.price.rent) }}
           </span>
-          <span>
+          <span
+            v-if="property.toRent && property.toSell"
+          >
             -
           </span>
-          <span>
-            Venda R$ 3000,00
+          <span
+            v-if="property.toSell"
+          >
+            Venda {{ formatCurrency(property.price.sale) }}
           </span>
         </div>
 
-        <span>
-          Condomínio: R$ 400
+        <div
+          v-else
+        >
+          <span>
+            {{ property.title }}
+          </span>
+        </div>
+
+        <span
+          v-if="property.type !== 'RELEASE' && property.condominium"
+        >
+          Condomínio: {{ formatCurrency(property.condominium.price) }}
         </span>
       </div>
-
-      
 
       <!-- Endereço -->
       <div
         class=""
       >
         <p>
-          Moema, São Paulo
+          {{ property.localization.neighborhood }}, {{ property.localization.state }}
         </p>
       </div>
 
       <div
         class="line-clamp-2"
       >
-        Casa perto do shopping, com um amplo quintal e muitas outras coisas que você pode ver na descrição e verá que é bem toooop
+        {{ property?.description }}
       </div>
 
     </div>
@@ -84,33 +105,34 @@
       <div
         class="flex items-center space-x-2"
       >
-        <span class="text-2xl icon-ruler"></span>
+        <span class="text-xl icon-straighten"></span>
         <span>
-          80m²
+          {{ localEnvironments.area }}m²
         </span>
       </div>
       <div
         class="flex items-center space-x-2"
       >
-        <span class="text-xl icon-bed"></span>
+        <span class="text-xl icon-hotel"></span>
         <span>
-          5
+          {{ localEnvironments.bedroom }}
         </span>
       </div>
       <div
         class="flex items-center space-x-2"
       >
-        <span class="text-xl icon-shower"></span>
+        <span class="text-lg icon-shower"></span>
         <span>
-          3
+          {{ localEnvironments.bathrooms }}
         </span>
       </div>
       <div
+        v-if="localEnvironments.garages"
         class="flex items-center space-x-2"
       >
-        <span class="text-xl icon-automobile"></span>
+        <span class="text-xl icon-directions_car"></span>
         <span>
-          4
+          {{ localEnvironments.garages }}
         </span>
       </div>
     </div>
@@ -118,12 +140,99 @@
 </template>
 
 <script>
+import { formatPtBrCurrency } from '../../services/formatCurrency'
+
 export default {
   name: 'PropertyItem',
 
+  props: {
+    property: {
+      type: Object,
+      required: true
+    }
+  },
+
+  data () {
+    return {
+      localEnvironments: {},
+      typeLabels: {
+        'APARTMENT': 'Apartamento',
+        'HOUSE_IN_CONDOMINIUM': 'Casa',
+        'PRIVATE_HOUSE': 'Casa',
+        'RELEASE': 'Lançamento',
+      },
+    }
+  },
+
+  mounted () {
+    this.init()
+  },
+
   methods: {
+    init () {
+      this.setPropertyEnvironments(this.property)
+    },
+
+    setPropertyEnvironments (property) {
+      if (property.type === 'RELEASE') {
+        this.setReleaseEnvironments(property)
+        return
+      }
+      this.setGeneralEnvironments(property)
+    },
+
+    setReleaseEnvironments (property) {
+      const environments = [
+        'bedroom',
+        'bathrooms',
+        'garages',
+        'balcony',
+        'livingroom',
+        'suites',
+        'area'
+      ]
+      environments.forEach(environment => {
+        const unitEnvironmentCount = property.release.units.reduce((acc, currentUnit) => {
+          if (!currentUnit[environment]) return acc
+          acc.push(currentUnit[environment])
+          return acc
+        }, [])
+        const unitEnvironmentFiltered = [...new Set(unitEnvironmentCount)]
+        if (!unitEnvironmentFiltered[0]) {
+          this.localEnvironments[environment] = null
+          return
+        }
+        if (!unitEnvironmentFiltered[1]) {
+          this.localEnvironments[environment] = unitEnvironmentFiltered[0]
+          return
+        }
+        const max = Math.max(...unitEnvironmentFiltered)
+        const min = Math.min(...unitEnvironmentFiltered)
+        this.localEnvironments[environment] = `${min} a ${max}`
+      })
+    },
+    
+    setGeneralEnvironments (property) {
+      for (let environment of Object.keys(property.environments)) {
+        this.localEnvironments[environment] = property.environments[environment][0]
+      }
+      this.localEnvironments.area = property.propertyArea
+    },
+
     redirectToProperty () {
-      this.$router.push('/property')      
+      this.$router.push(`/property/${this.property.cod}`)
+    },
+
+    formatCurrency (value) {
+      return formatPtBrCurrency(value)
+    },
+
+    addToFavorite () {
+      this.$store.commit('addInFavoriteList', { ...this.property })
+    },
+
+    removeFavorite () {
+      this.$store.commit('removeFromFavoriteList', this.property.cod)
     }
   }
 }

@@ -2,7 +2,7 @@ import { arminAxios } from '../ArminAxiosClient'
 
 const resource = 'properties'
 
-const getProperties = async (params) => {
+const find = async (params) => {
   const response = await arminAxios.get(`${resource}?${params}`)
   return response.data
 }
@@ -14,5 +14,5 @@ const getOneByCod = async (propertyCod, params) => {
 
 export {
   getOneByCod,
-  getProperties
+  find
 }

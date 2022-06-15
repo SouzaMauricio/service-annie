@@ -42,7 +42,7 @@
       </button>
     </div>
     <router-link
-      to="main"
+      to="/main"
       class="flex md:hidden"
     >
       <img
@@ -55,23 +55,28 @@
       id="left-menu"
       class="items-center hidden space-x-4 font-medium text-annie-second md:flex"
     >
-      <img
-        src="../../assets/logo/logo_branco.png"
-        class="h-12"
-        alt=""
-      >
       <router-link
-        to="main"
+        to="/main"
+        class="flex"
+      >
+        <img
+          src="../../assets/logo/logo_branco.png"
+          class="h-12"
+          alt=""
+        >
+      </router-link>
+      <router-link
+        to="/main"
       >
         Imóveis para alugar
       </router-link>
       <router-link
-        to="main"
+        to="/main"
       >
         Imóveis para compar
       </router-link>
       <router-link
-        to="main"
+        to="/main"
       >
         Lançamentos
       </router-link>
@@ -132,7 +137,7 @@
           class="py-4"
         >
           <router-link
-            to="main"
+            to="/main"
           >
             Imóveis para alugar
           </router-link>
@@ -141,7 +146,7 @@
           class="py-4"
         >
           <router-link
-            to="main"
+            to="/main"
           >
             Imóveis para compar
           </router-link>
@@ -150,7 +155,7 @@
           class="py-4"
         >
           <router-link
-            to="main"
+            to="/main"
           >
             Lançamentos
           </router-link>
