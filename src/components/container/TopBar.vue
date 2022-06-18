@@ -66,7 +66,7 @@
         >
       </router-link>
       <router-link
-        to="/main"
+        to="/rent"
       >
         Imóveis para alugar
       </router-link>
@@ -137,7 +137,7 @@
           class="py-4"
         >
           <router-link
-            to="/main"
+            to="/rent"
           >
             Imóveis para alugar
           </router-link>

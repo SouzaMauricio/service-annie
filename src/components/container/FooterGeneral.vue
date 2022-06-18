@@ -52,7 +52,7 @@
           <span class="text-xl text-white icon-attach_money"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="/rent"
           >
             Para Alugar
           </router-link>
