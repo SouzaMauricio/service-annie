@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MainScreen from './views/MainScreen'
 import PropertyScreen from './views/PropertyScreen'
 import RentScreen from './views/RentScreen'
+import SellScreen from './views/SellScreen'
+import ReleaseScreen from './views/ReleaseScreen'
 import DefaultContainer from './containers/DefaultContainer'
 
 const routes = [
@@ -28,6 +30,16 @@ const routes = [
         path: '/rent', 
         name: 'Rent',
         component: RentScreen
+      },
+      {
+        path: '/sell', 
+        name: 'Sell',
+        component: SellScreen
+      },
+      {
+        path: '/release', 
+        name: 'Release',
+        component: ReleaseScreen
       }
     ]
   }

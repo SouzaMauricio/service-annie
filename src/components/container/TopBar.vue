@@ -71,12 +71,12 @@
         Imóveis para alugar
       </router-link>
       <router-link
-        to="/main"
+        to="/sell"
       >
         Imóveis para compar
       </router-link>
       <router-link
-        to="/main"
+        to="/release"
       >
         Lançamentos
       </router-link>
@@ -138,6 +138,7 @@
         >
           <router-link
             to="/rent"
+            @click="showMenu = false"
           >
             Imóveis para alugar
           </router-link>
@@ -146,7 +147,8 @@
           class="py-4"
         >
           <router-link
-            to="/main"
+            to="/sell"
+            @click="showMenu = false"
           >
             Imóveis para compar
           </router-link>
@@ -155,7 +157,8 @@
           class="py-4"
         >
           <router-link
-            to="/main"
+            to="/release"
+            @click="showMenu = false"
           >
             Lançamentos
           </router-link>

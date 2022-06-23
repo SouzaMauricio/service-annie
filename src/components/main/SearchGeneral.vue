@@ -8,15 +8,15 @@
     >
       <button
         class="px-2 py-3 font-medium hover:bg-gray-50 md:px-4 whitespace-nowrap"
-        :class="typeOfSearch === 'buy' ? 'border-b-2 border-annie-primary text-annie-primary' : 'text-gray-500'"
-        @click="typeOfSearch = 'buy'"
+        :class="typeOfSearch === 'sell' ? 'border-b-2 border-annie-primary text-annie-primary' : 'text-gray-500'"
+        @click="typeOfSearch = 'sell'"
       >
         Quero Comprar
       </button>
 
       <button
         class="px-2 py-3 font-medium hover:bg-gray-50 md:px-4 whitespace-nowrap"
-        :class="typeOfSearch !== 'buy' ? 'border-b-2 border-annie-primary text-annie-primary' : 'text-gray-500'"
+        :class="typeOfSearch === 'rent' ? 'border-b-2 border-annie-primary text-annie-primary' : 'text-gray-500'"
         @click="typeOfSearch = 'rent'"
       >
         Quero Alugar
@@ -46,11 +46,13 @@
           type="text"
           class="w-full text-sm border-0 outline-0 focus:ring-0 md:text-lg"
           placeholder="Região, empreendimento ou código"
+          v-model="search.search"
         >
       </div>
 
       <button
         class="hidden px-8 py-1 text-white rounded-full bg-annie-primary hover:opacity-80 md:block"
+        @click="redirectToSearch()"
       >
         Buscar
       </button>
@@ -127,7 +129,7 @@
             name="bedroom_1"
             value="1"
             id="bedroom_1"
-            v-model="search.bedroom"
+            v-model="search.bedrooms"
           />
           <label
             class="flex items-center justify-center w-8 h-8 text-sm font-medium transition-colors border border-gray-100 rounded-full shadow-sm cursor-pointer peer-checked:border-annie-primary hover:bg-gray-50 peer-checked:ring-1 peer-checked:ring-annie-primary"
@@ -143,7 +145,7 @@
             name="bedroom_2"
             value="2"
             id="bedroom_2"
-            v-model="search.bedroom"
+            v-model="search.bedrooms"
           />
           <label
             class="flex items-center justify-center w-8 h-8 text-sm font-medium transition-colors border border-gray-100 rounded-full shadow-sm cursor-pointer peer-checked:border-annie-primary hover:bg-gray-50 peer-checked:ring-1 peer-checked:ring-annie-primary"
@@ -159,7 +161,7 @@
             name="bedroom_3"
             value="3"
             id="bedroom_3"
-            v-model="search.bedroom"
+            v-model="search.bedrooms"
           />
           <label
             class="flex items-center justify-center w-8 h-8 text-sm font-medium transition-colors border border-gray-100 rounded-full shadow-sm cursor-pointer peer-checked:border-annie-primary hover:bg-gray-50 peer-checked:ring-1 peer-checked:ring-annie-primary"
@@ -175,7 +177,7 @@
             name="bedroom_4"
             value="4"
             id="bedroom_4"
-            v-model="search.bedroom"
+            v-model="search.bedrooms"
           />
           <label
             class="flex items-center justify-center w-8 h-8 text-sm font-medium transition-colors border border-gray-100 rounded-full shadow-sm cursor-pointer peer-checked:border-annie-primary hover:bg-gray-50 peer-checked:ring-1 peer-checked:ring-annie-primary"
@@ -267,12 +269,13 @@ export default {
 
   data () {
     return {
-      typeOfSearch:'buy',
+      typeOfSearch:'sell',
       search: {
-        bedroom: 0,
+        bedrooms: 0,
         garages: 0,
         minValue: 0,
-        maxValue: 0
+        maxValue: 0,
+        search: ''
       },
       money: {
         decimal: ',',
@@ -281,6 +284,23 @@ export default {
         precision: 2
       },
       showFilters: false
+    }
+  },
+
+  methods: {
+    redirectToSearch () {
+      const query = {}
+      if (this.search.bedrooms) query.bedrooms = this.search.bedrooms
+      if (this.search.garages) query.garages = this.search.garages
+      if (this.search.search) query.search = this.search.search
+      if (this.search.minValue !== 'R$ 0,00') query.minValue = this.search.minValue.replace('R$ ', '')
+      if (this.search.maxValue !== 'R$ 0,00') query.maxValue = this.search.maxValue.replace('R$ ', '')
+      this.$router.push(
+        {
+          path: `/${this.typeOfSearch}`,
+          query
+        }
+      )
     }
   }
 }

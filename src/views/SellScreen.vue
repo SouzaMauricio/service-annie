@@ -3,7 +3,7 @@
     class="flex justify-center w-full h-full"
   >
     <SearchContent
-      type="rent"
+      type="sell"
       class="max-w-max-content"
     />
   </div>
@@ -13,7 +13,7 @@
 import SearchContent from '../components/search/SearchContent'
 
 export default {
-  name: 'RentScreen',
+  name: 'SellScreen',
 
   components: {
     SearchContent

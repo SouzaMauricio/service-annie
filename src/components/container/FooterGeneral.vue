@@ -40,7 +40,7 @@
           <span class="text-xl text-white icon-local_offer"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="/sell"
           >
             Para Comprar
           </router-link>
@@ -64,7 +64,7 @@
           <span class="text-xl text-white icon-star_rate"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="release"
           >
             Lançamentos
           </router-link>

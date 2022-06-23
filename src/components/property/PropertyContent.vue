@@ -234,12 +234,12 @@
           <p
             v-if="property.toSell"
           >
-            Venda: R$ {{ property.price?.sale }}
+            Venda: {{ formatCurrency(property.price?.sale) }}
           </p>
           <p
             v-if="property.toRent"
           >
-            Locação: R$ {{ property.price?.rent }}
+            Locação: {{ formatCurrency(property.price?.rent) }}
           </p>
         </div>
 
@@ -613,7 +613,7 @@
               <b>
                 Valor:
               </b>
-              R$ {{ property.condominium.price }}
+              {{ formatCurrency(property.condominium.price) }}
             </p>
           </div>
           <p
@@ -714,6 +714,7 @@ import CustomModal from '../commons/CustomModal'
 import * as PropertyGateway from '../../gateway/armin/services/properties'
 import { required, email } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core'
+import { formatPtBrCurrency } from '../../services/formatCurrency'
 
 export default {
   name: 'PropertyContent',
@@ -936,6 +937,10 @@ export default {
 
     removeFavorite () {
       this.$store.commit('removeFromFavoriteList', this.property.cod)
+    },
+
+    formatCurrency (value) {
+      return formatPtBrCurrency(value)
     }
   }
 }
