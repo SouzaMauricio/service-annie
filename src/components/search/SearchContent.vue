@@ -185,6 +185,7 @@ export default {
       params += this.search.minValue ? `&minValue=${this.search.minValue}` : ''
       params += this.search.maxValue ? `&maxValue=${this.search.maxValue}` : ''
       params += this.search.search ? `&search=${this.search.search}` : ''
+      params += '&show=true'
       if (this.type === 'rent') params += '&toRent=true'
       if (this.type === 'sell') params += '&toSell=true'
       if (this.type === 'release') params += '&type=release'
