@@ -49,7 +49,7 @@ export default {
       try {
         this.loadingError = false
         this.loading = true
-        const params = 'fields=docs(title,description,toRent,toSell,price,pictures(fullPath),localization(state,neighborhood),condominium(price,name),release,environments,propertyArea,type,cod'
+        const params = 'fields=docs(title,description,toRent,toSell,price,pictures(fullPath),localization(state,neighborhood),condominium(price,name),release,environments,propertyArea,type,cod&show=true'
         const properties = await PropertiesGateway.find(params)
         this.propertiesList = properties.docs
       } catch (error) {

@@ -47,6 +47,7 @@
           class="w-full text-sm border-0 outline-0 focus:ring-0 md:text-lg"
           placeholder="Região, empreendimento ou código"
           v-model="search.search"
+          @keydown.enter="redirectToSearch()"
         >
       </div>
 
@@ -74,6 +75,7 @@
 
       <button
         class="block px-8 py-1 text-white rounded-full bg-annie-primary hover:opacity-80 md:hidden"
+        @click="redirectToSearch()"
       >
         Buscar
       </button>

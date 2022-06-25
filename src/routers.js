@@ -3,6 +3,7 @@ import MainScreen from './views/MainScreen'
 import PropertyScreen from './views/PropertyScreen'
 import RentScreen from './views/RentScreen'
 import SellScreen from './views/SellScreen'
+import DefaultScreen from './views/DefaultScreen'
 import ReleaseScreen from './views/ReleaseScreen'
 import DefaultContainer from './containers/DefaultContainer'
 
@@ -40,6 +41,12 @@ const routes = [
         path: '/release', 
         name: 'Release',
         component: ReleaseScreen
+      },
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'RouteNotFound',
+        component: DefaultScreen,
+        meta: { requiresAuth: true }
       }
     ]
   }

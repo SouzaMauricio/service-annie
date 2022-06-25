@@ -628,7 +628,7 @@
             <li
               v-for="(facility, index) of property.condominium?.facilities"
               :key="index"
-              class="flex space-x-2"
+              class="flex items-center space-x-2"
             >
               <span :class="facility.icon"></span>
               <span>
@@ -654,7 +654,7 @@
             <li
               v-for="(nearby, index) of property.nearby"
               :key="index"
-              class="flex space-x-2"
+              class="flex items-center space-x-2"
             >
               <span :class="nearby.icon"></span>
               <span>
