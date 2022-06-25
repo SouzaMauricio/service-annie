@@ -90,7 +90,7 @@
         to="/contactUs"
         class="flex space-x-2"
       >
-        <span class="text-xl text-white icon-support_agent"></span>
+        <span class="text-2xl text-white icon-support_agent"></span>
         <p
           class="hidden lg:block"
         >
