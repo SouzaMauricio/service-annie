@@ -5,6 +5,8 @@ import RentScreen from './views/RentScreen'
 import SellScreen from './views/SellScreen'
 import DefaultScreen from './views/DefaultScreen'
 import ReleaseScreen from './views/ReleaseScreen'
+import ContactUsScreen from './views/ContactUsScreen'
+import FavoriteScreen from './views/FavoriteScreen'
 import DefaultContainer from './containers/DefaultContainer'
 
 const routes = [
@@ -41,6 +43,16 @@ const routes = [
         path: '/release', 
         name: 'Release',
         component: ReleaseScreen
+      },
+      {
+        path: '/contactUs', 
+        name: 'ContactUs',
+        component: ContactUsScreen
+      },
+      {
+        path: '/favorites', 
+        name: 'Favorites',
+        component: FavoriteScreen
       },
       {
         path: '/:pathMatch(.*)*',

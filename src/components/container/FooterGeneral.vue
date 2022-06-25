@@ -87,7 +87,7 @@
           <span class="text-xl text-white icon-house"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="contactUs?type=SELL_MY_PROPERTY"
           >
             Venda seu imóvel
           </router-link>
@@ -99,7 +99,7 @@
           <span class="text-xl text-white icon-apartment"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="contactUs?type=RENT_MY_PROPERTY"
           >
             Alugue seu imóvel
           </router-link>
@@ -111,7 +111,7 @@
           <span class="text-xl text-white icon-business_center"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="contactUs?type=PARTNERSHIPS"
           >
             Parcerias
           </router-link>
@@ -167,7 +167,7 @@
           <span class="text-xl text-white icon-support_agent"></span>
           <router-link
             class="text-lg text-medium"
-            to="main"
+            to="/contactUs"
           >
             Fale conosco
           </router-link>

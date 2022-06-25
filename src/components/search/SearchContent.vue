@@ -397,8 +397,8 @@ export default {
   methods: {
     setQueryParams () {
       const { query } = this.$route
-      if (query.maxValue) this.search.maxValue = query.maxValue.replace('.', '').replace(',', '.')
-      if (query.minValue) this.search.minValue = query.minValue.replace('.', '').replace(',', '.')
+      if (query.maxValue) this.search.maxValue = query.maxValue
+      if (query.minValue) this.search.minValue = query.minValue
       if (query.bedrooms) this.search.bedrooms = query.bedrooms
       if (query.garages) this.search.garages = query.garages
       if (query.search) this.search.search = query.search
@@ -408,8 +408,8 @@ export default {
       let params = ''
       params += this.search.bedrooms ? `bedrooms=${this.search.bedrooms}` : ''
       params += this.search.garages ? `&garages=${this.search.garages}` : ''
-      params += this.search.minValue ? `&minValue=${this.search.minValue}` : ''
-      params += this.search.maxValue ? `&maxValue=${this.search.maxValue}` : ''
+      params += this.search.minValue !== 'R$ 0,00' ? `&minValue=${this.search.minValue.replace('R$ ', '').replace('.', '').replace(',', '.')}` : ''
+      params += this.search.maxValue !== 'R$ 0,00' ? `&maxValue=${this.search.maxValue.replace('R$ ', '').replace('.', '').replace(',', '.')}` : ''
       params += this.search.search ? `&search=${this.search.search}` : ''
       params += '&show=true'
       if (this.type === 'rent') params += '&toRent=true'

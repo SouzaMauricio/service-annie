@@ -21,7 +21,9 @@ const store = createStore({
     }
   },
   getters: {
-    isFavorited: (state) => (propertyCod) => !!state.favoriteList.find(property => property.cod === propertyCod)
+    isFavorited: (state) => (propertyCod) => !!state.favoriteList.find(property => property.cod === propertyCod),
+    getFavoritesList: (state) => state.favoriteList,
+    favoriteListLength: (state) => state.favoriteList.length
   },
   plugins: [vuexLocal.plugin]
 })
