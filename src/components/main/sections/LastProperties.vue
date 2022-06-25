@@ -9,6 +9,16 @@
     </span>
 
     <div
+      v-if="loading"
+      class="flex items-center justify-center w-full"
+    >
+      <LoadingSpin
+        text="Carregando propriedades"
+      />
+    </div>
+
+    <div
+      v-if="!loading && propertiesList[0]"
       class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
     >
       <PropertyItem
@@ -18,25 +28,38 @@
       />
     </div>
 
+    <SnackBar
+      :show="snackBar.show"
+      :message="snackBar.message"
+      @closed="snackBar.show = false"
+    />
   </div>
 </template>
 
 <script>
 import PropertyItem from '../../cards/PropertyItem.vue'
 import * as PropertiesGateway from '../../../gateway/armin/services/properties'
+import SnackBar from '../../commons/SnackBar'
+import LoadingSpin from '../../commons/LoadingSpin'
 
 export default {
   name: 'LastProperties',
 
   components: {
-    PropertyItem
+    PropertyItem,
+    SnackBar,
+    LoadingSpin
   },
 
   data () {
     return {
       propertiesList: [],
       loading: false,
-      loadingError: false
+      loadingError: false,
+      snackBar: {
+        show: false,
+        message: ''
+      }
     }
   },
 

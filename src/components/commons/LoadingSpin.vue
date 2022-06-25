@@ -3,10 +3,10 @@
     class="flex items-center justify-center w-full space-x-4"
     :class="py"
   >
-    <span class="w-6 h-6 mr-1 -ml-1 text-2xl text-bertolt-text animate-spin icon-spinner10"></span>
+    <span class="w-6 h-6 mr-1 -ml-1 text-2xl animate-spin icon-spinner10 text-annie-text"></span>
     <span
       v-if="text"
-      class="text-bertolt-text"
+      class="text-annie-text"
     >
       {{ text }}
     </span>
