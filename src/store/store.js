@@ -9,7 +9,8 @@ const vuexLocal = new VuexPersistence({
 const store = createStore({
   state () {
     return {
-      favoriteList: []
+      favoriteList: [],
+      acceptedPrivacyPolicy: false
     }
   },
   mutations: {
@@ -18,12 +19,16 @@ const store = createStore({
     },
     removeFromFavoriteList (state, propertyCod) {
       state.favoriteList.splice(state.favoriteList.indexOf(state.favoriteList.find(property => property.cod === propertyCod)), 1)
+    },
+    privacyPolicyAccept (state) {
+      state.acceptedPrivacyPolicy = true
     }
   },
   getters: {
     isFavorited: (state) => (propertyCod) => !!state.favoriteList.find(property => property.cod === propertyCod),
     getFavoritesList: (state) => state.favoriteList,
-    favoriteListLength: (state) => state.favoriteList.length
+    favoriteListLength: (state) => state.favoriteList.length,
+    isPrivacyPolicyAccepted: (state) => state.acceptedPrivacyPolicy
   },
   plugins: [vuexLocal.plugin]
 })

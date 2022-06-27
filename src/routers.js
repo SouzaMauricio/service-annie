@@ -7,6 +7,7 @@ import DefaultScreen from './views/DefaultScreen'
 import ReleaseScreen from './views/ReleaseScreen'
 import ContactUsScreen from './views/ContactUsScreen'
 import FavoriteScreen from './views/FavoriteScreen'
+import PrivacyPolicyScreen from './views/PrivacyPolicyScreen'
 import DefaultContainer from './containers/DefaultContainer'
 
 const routes = [
@@ -53,6 +54,11 @@ const routes = [
         path: '/favorites', 
         name: 'Favorites',
         component: FavoriteScreen
+      },
+      {
+        path: '/privacyPolicy', 
+        name: 'PrivacyPolicy',
+        component: PrivacyPolicyScreen
       },
       {
         path: '/:pathMatch(.*)*',

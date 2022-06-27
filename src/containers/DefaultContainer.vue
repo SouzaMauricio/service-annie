@@ -11,6 +11,9 @@
         />
       </div>
     </div>
+    <PrivacyPolicyAccept
+      v-if="!$store.getters.isPrivacyPolicyAccepted"
+    />
     <FooterGeneral
       class="bottom-0"
     />
@@ -18,6 +21,7 @@
 </template>
 
 <script>
+import PrivacyPolicyAccept from './PrivacyPolicyAccept'
 import TopBar from '../components/container/TopBar'
 import FooterGeneral from '../components/container/FooterGeneral'
 
@@ -26,7 +30,8 @@ export default {
 
   components: {
     TopBar,
-    FooterGeneral
+    FooterGeneral,
+    PrivacyPolicyAccept
   }
 }
 </script>
