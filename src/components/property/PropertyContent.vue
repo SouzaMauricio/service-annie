@@ -944,8 +944,9 @@ export default {
         const textToCopy = window.location.href
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(textToCopy)
+            this.snackBar.message = 'Link copiado!!'
+            this.snackBar.show = true
         } else {
-            // text area method
             let textArea = document.createElement("textarea")
             textArea.value = textToCopy
             textArea.style.position = "fixed"
@@ -957,10 +958,10 @@ export default {
             return new Promise((res, rej) => {
                 document.execCommand('copy') ? res() : rej()
                 textArea.remove()
+                this.snackBar.message = 'Link copiado!!'
+                this.snackBar.show = true
             })
         }
-        this.snackBar.message = 'Link copiado!!'
-        this.snackBar.show = true
       } catch(error) {
         this.snackBar.message = error.message
         this.snackBar.show = true
