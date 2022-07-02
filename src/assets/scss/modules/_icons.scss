@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-old-phone:before {
+  content: "\ea1b";
+}
 .icon-shower:before {
   content: "\ea14";
 }
@@ -388,6 +391,9 @@
 .icon-fastfood:before {
   content: "\e95a";
 }
+.icon-check:before {
+  content: "\ea1a";
+}
 .icon-adb:before {
   content: "\e95b";
 }
@@ -441,6 +447,9 @@
 }
 .icon-school:before {
   content: "\e965";
+}
+.icon-share:before {
+  content: "\ea1c";
 }
 .icon-thumb_up_alt:before {
   content: "\e966";
@@ -861,6 +870,9 @@
 }
 .icon-spinner10:before {
   content: "\ea19";
+}
+.icon-lock:before {
+  content: "\ea1d";
 }
 .icon-meter:before {
   content: "\e9a6";

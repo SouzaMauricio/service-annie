@@ -148,7 +148,7 @@
         class="top-0 h-full space-y-5 lg:top-24 lg:sticky"
       >
         <div
-          class="justify-between block w-full space-y-4 xl:flex sm:space-y-0"
+          class="flex items-center justify-between w-full space-y-0"
         >
           <div>
             <span
@@ -159,55 +159,51 @@
           </div>
 
           <div
-            class="flex space-x-2 text-sm"
+            class="flex text-sm"
           >
             <div
               class="flex items-center space-x-2"
             >
-              <span>
-                Favoritar
-              </span>
-
-              <div
-                class="text-2xl text-annie-primary"
+              <button
+                v-if="$store.getters.isFavorited(property.cod)"
+                @click="removeFavorite()"
+                class="flex items-center justify-center p-1 space-x-0 rounded-full sm:space-x-2 lg:space-x-0 xl:space-x-2 hover:bg-gray-100"
               >
-                <button
-                  v-if="$store.getters.isFavorited(property.cod)"
-                  @click="removeFavorite()"
-                  class="flex items-center justify-center p-1 rounded-full hover:bg-gray-100"
+                <span
+                  class="hidden sm:block lg:hidden xl:block"
                 >
-                  <span class="icon-favorite">
-                  </span>
-                </button>
-                <button
-                  v-else
-                  @click="addToFavorite()"
-                  class="flex items-center justify-center p-1 rounded-full hover:bg-gray-100"
+                  Favoritar
+                </span>
+                <span class="text-2xl icon-favorite text-annie-primary">
+                </span>
+              </button>
+              <button
+                v-else
+                @click="addToFavorite()"
+                class="flex items-center justify-center p-1 space-x-0 rounded-full sm:space-x-2 lg:space-x-0 xl:space-x-2 hover:bg-gray-100"
+              >
+                <span
+                  class="hidden sm:block lg:hidden xl:block"
                 >
-                  <span class="icon-favorite_outline"></span>
-                </button>
-              </div>
+                  Favoritar
+                </span>
+                <span class="text-2xl icon-favorite_outline text-annie-primary"></span>
+              </button>
             </div>
             <div
-              class="flex items-center space-x-2"
+              class="flex items-center"
             >
-              <span>
-                Compartilhar
-              </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5 text-annie-primary"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
+              <button
+                class="flex items-center justify-center p-1 space-x-0 rounded-full sm:space-x-2 lg:space-x-0 xl:space-x-2 hover:bg-gray-100"
+                @click="copyUrl()"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                />
-              </svg>
+                <span
+                  class="hidden sm:block lg:hidden xl:block"
+                >
+                  Compartilhar
+                </span>
+                <span class="text-2xl icon-share text-annie-primary"></span>
+              </button>
             </div>
           </div>
         </div>
@@ -941,6 +937,17 @@ export default {
 
     formatCurrency (value) {
       return formatPtBrCurrency(value)
+    },
+
+    async copyUrl() {
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        this.snackBar.message = 'Link copiado!!'
+        this.snackBar.show = true
+      } catch(error) {
+        this.snackBar.message = error.message
+        this.snackBar.show = true
+      }
     }
   }
 }
