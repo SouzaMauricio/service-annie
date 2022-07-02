@@ -941,7 +941,24 @@ export default {
 
     async copyUrl() {
       try {
-        await navigator.clipboard.writeText(window.location.href)
+        const textToCopy = window.location.href
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(textToCopy)
+        } else {
+            // text area method
+            let textArea = document.createElement("textarea")
+            textArea.value = textToCopy
+            textArea.style.position = "fixed"
+            textArea.style.left = "-999999px"
+            textArea.style.top = "-999999px"
+            document.body.appendChild(textArea)
+            textArea.focus()
+            textArea.select()
+            return new Promise((res, rej) => {
+                document.execCommand('copy') ? res() : rej()
+                textArea.remove()
+            })
+        }
         this.snackBar.message = 'Link copiado!!'
         this.snackBar.show = true
       } catch(error) {
